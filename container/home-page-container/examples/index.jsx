@@ -1,9 +1,13 @@
+"use client";
 import Image from "next/image";
 import { EXAMPLES } from "./constants";
 import styles from "./styles.module.scss";
 import { Tag } from "../../../components/tag";
+import { useHomepage } from "../use-homepage";
 
 function Examples() {
+  const { copyPrompt } = useHomepage();
+
   return (
     <div className={styles.examples}>
       {EXAMPLES.map((example) => (
@@ -12,9 +16,7 @@ function Examples() {
           <Tag
             className={styles.copyButton}
             title="Copy"
-            onClick={() => {
-              console.log("asd");
-            }}
+            onClick={() => copyPrompt(example.prompt)}
           />
           <Image src={example.image} alt={example.prompt} fill />
         </div>
