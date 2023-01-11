@@ -1,0 +1,42 @@
+.promptForm {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: var(--gap-m);
+  background-color: var(--black-opaque);
+  border-radius: var(--radius-s);
+  border: 1.5px solid var(--gray-800);
+  overflow: hidden;
+  position: relative;
+  animation: glow 3s ease-in-out infinite alternate;
+  padding: var(--gap-l);
+
+  @keyframes glow {
+    from {
+      box-shadow: var(--shadow-xl) var(--black);
+    }
+    to {
+      box-shadow: var(--shadow-xl) var(--gray-900);
+    }
+  }
+}
+
+.promptTextarea {
+  flex: 1;
+  resize: none;
+}
+
+.generateButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--gap-l) var(--gap-xl);
+  background-color: var(--black-light-opaque);
+  transition: opacity 300ms linear;
+  border-radius: var(--radius-s);
+  border: 1px solid var(--gray-800);
+}
+
+.generateButton:disabled {
+  opacity: 0.2;
+}

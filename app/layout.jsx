@@ -1,14 +1,23 @@
-import './globals.css'
+import { Inter } from "@next/font/google";
+
+import "../styles/reset.css";
+import "../styles/variables.css";
+import "../styles/global.css";
+import { Footer } from "../components/footer";
+
+const mainFont = Inter({
+  subsets: ["latin"],
+});
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
-      {/*
-        <head /> will contain the components returned by the nearest parent
-        head.jsx. Find out more at https://beta.nextjs.org/docs/api-reference/file-conventions/head
-      */}
+    <html lang="en" className={mainFont.className}>
       <head />
-      <body>{children}</body>
+      <body className="layout">
+        <div className="overlay"></div>
+        {children}
+        <Footer />
+      </body>
     </html>
-  )
+  );
 }
