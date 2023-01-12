@@ -41,7 +41,7 @@ async function handler(req, res) {
     const result = await getGeneration(predictions.urls.get);
 
     if (result.status === "succeeded") {
-      generatedImage = result.output;
+      [generatedImage] = result.output;
     } else if (result.status === "failed") {
       break;
     } else {

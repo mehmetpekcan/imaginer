@@ -5,12 +5,9 @@ const HomepageContext = createContext();
 
 export const HomepageContextProvider = ({ children }) => {
   const [prompt, setPrompt] = useState("");
+  const [resultPrompt, setResultPrompt] = useState("");
   const [isSubmitting, setSubmitting] = useState(false);
-
-  const resetPromptState = () => {
-    setPrompt("");
-    setSubmitting(false);
-  };
+  const [image, setImage] = useState(null);
 
   const changePrompt = (newPrompt) => setPrompt(newPrompt);
 
@@ -21,15 +18,19 @@ export const HomepageContextProvider = ({ children }) => {
 
   const generateImage = async () => {
     setSubmitting(true);
-    console.log("Inside generation", prompt);
+    setImage(null);
+    setResultPrompt("");
 
-    // await fetch("/api/generate", {
-    //   method: "POST",
-    //   headers: { "Content-Type": "application/json" },
-    //   body: JSON.stringify({ prompt }),
-    // });
+    const response = await fetch("/api/generate", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ prompt }),
+    });
+    const generatedImage = await response.json();
 
-    resetPromptState();
+    setResultPrompt(prompt);
+    setSubmitting(false);
+    setImage(generatedImage);
   };
 
   const data = useMemo(
@@ -39,9 +40,11 @@ export const HomepageContextProvider = ({ children }) => {
       isSubmitting,
       copyPrompt,
       generateImage,
+      image,
+      resultPrompt,
     }),
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [isSubmitting, prompt]
+    [isSubmitting, prompt, image, resultPrompt]
   );
 
   return (
