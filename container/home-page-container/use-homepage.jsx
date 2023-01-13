@@ -8,6 +8,7 @@ export const HomepageContextProvider = ({ children }) => {
   const [resultPrompt, setResultPrompt] = useState("");
   const [isSubmitting, setSubmitting] = useState(false);
   const [image, setImage] = useState(null);
+  const [error, setError] = useState(null);
 
   const changePrompt = (newPrompt) => setPrompt(newPrompt);
 
@@ -21,16 +22,27 @@ export const HomepageContextProvider = ({ children }) => {
     setImage(null);
     setResultPrompt("");
 
-    const response = await fetch("/api/generate", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ prompt }),
-    });
-    const generatedImage = await response.json();
+    try {
+      const response = await fetch("/api/generate", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ prompt }),
+      });
 
-    setResultPrompt(prompt);
+      if (!response.ok) throw new Error(response.statusText ?? response.status);
+
+      const generatedImage = await response.json();
+
+      setError(null);
+      setResultPrompt(prompt);
+      setImage(generatedImage);
+    } catch (error) {
+      setError(error);
+    }
+
     setSubmitting(false);
-    setImage(generatedImage);
   };
 
   const data = useMemo(
@@ -42,9 +54,10 @@ export const HomepageContextProvider = ({ children }) => {
       generateImage,
       image,
       resultPrompt,
+      error,
     }),
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [isSubmitting, prompt, image, resultPrompt]
+    [isSubmitting, prompt, image, resultPrompt, error]
   );
 
   return (

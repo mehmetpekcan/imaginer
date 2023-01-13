@@ -7,12 +7,10 @@ import { useHomepage } from "../use-homepage";
 import { Loading } from "../../../components/loading";
 
 function ResultImage() {
-  const { isSubmitting, resultPrompt, image } = useHomepage();
+  const { isSubmitting, resultPrompt, image, error } = useHomepage();
 
+  if (error) return <p className={styles.error}>{error.message}</p>;
   if (!isSubmitting && !image) return null;
-
-  if (!isSubmitting && !image?.startsWith("https"))
-    return <p className={styles.error}>Failed to generate</p>;
 
   return (
     <div className={styles.resultImage}>

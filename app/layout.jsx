@@ -14,7 +14,7 @@ export default function RootLayout({ children }) {
     <html lang="en" className={mainFont.className}>
       <head />
       <body className="layout">
-        <div className="overlay"></div>
+        <div aria-hidden="true" className="overlay" />
         {children}
         <Footer />
       </body>
