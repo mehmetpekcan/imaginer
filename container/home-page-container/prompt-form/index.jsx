@@ -3,7 +3,7 @@ import styles from "./styles.module.scss";
 import { useHomepage } from "../use-homepage";
 
 function PromptForm() {
-  const { generateImage, prompt, setPrompt } = useHomepage();
+  const { isSubmitting, generateImage, prompt, setPrompt } = useHomepage();
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -29,7 +29,7 @@ function PromptForm() {
         <button
           className={styles.generateButton}
           type="submit"
-          // disabled={isSubmitting}
+          disabled={isSubmitting}
         >
           Generate
         </button>
