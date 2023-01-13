@@ -1,10 +1,10 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
-import { Tag } from "../../../components/tag";
+import { Tag } from "@/components/tag";
 import styles from "./styles.module.scss";
 import { useHomepage } from "../use-homepage";
-import { Loading } from "../../../components/loading";
+import { Loading } from "@/components/loading";
 
 function ResultImage() {
   const { isSubmitting, resultPrompt, image, error } = useHomepage();

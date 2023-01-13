@@ -1,13 +1,8 @@
-import { Inter } from "@next/font/google";
-
-import "../styles/reset.css";
-import "../styles/variables.css";
-import "../styles/global.css";
-import { Footer } from "../components/footer";
-
-const mainFont = Inter({
-  subsets: ["latin"],
-});
+import { mainFont } from "@/libs/font";
+import "@/styles/reset.css";
+import "@/styles/variables.css";
+import "@/styles/global.css";
+import { Footer } from "@/components/footer";
 
 export default function RootLayout({ children }) {
   return (

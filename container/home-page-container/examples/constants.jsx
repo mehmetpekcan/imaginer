@@ -1,9 +1,9 @@
-import Example1 from "../../../assets/images/example-1.png";
-import Example2 from "../../../assets/images/example-2.png";
-import Example3 from "../../../assets/images/example-3.png";
-import Example4 from "../../../assets/images/example-4.png";
-import Example5 from "../../../assets/images/example-5.png";
-import Example6 from "../../../assets/images/example-6.png";
+import Example1 from "@/assets/images/example-1.png";
+import Example2 from "@/assets/images/example-2.png";
+import Example3 from "@/assets/images/example-3.png";
+import Example4 from "@/assets/images/example-4.png";
+import Example5 from "@/assets/images/example-5.png";
+import Example6 from "@/assets/images/example-6.png";
 
 export const EXAMPLES = [
   {

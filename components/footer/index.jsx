@@ -1,6 +1,6 @@
 import Link from "next/link";
-import GithubIcon from "../../assets/icons/github.svg";
-import TwitterIcon from "../../assets/icons/twitter.svg";
+import GithubIcon from "@/assets/icons/github.svg";
+import TwitterIcon from "@/assets/icons/twitter.svg";
 
 import styles from "./styles.module.scss";
 

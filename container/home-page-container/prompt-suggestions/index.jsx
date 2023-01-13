@@ -1,5 +1,5 @@
 "use client";
-import { Tag } from "../../../components/tag";
+import { Tag } from "@/components/tag";
 import { SUGGESTIONS } from "./constants";
 import { useHomepage } from "../use-homepage";
 import styles from "./styles.module.scss";
